@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { AutoresModule } from './autores/autores.module';
 import { GeneroModule } from './genero/genero.module';
-import { ConfigModule } from '@nestjs/config';
-import { Autore } from './autores/entities/autore.entity';
-import { Genero } from './genero/entities/genero.entity';
+import { CancionModule } from './cancion/cancion.module';
 
 
 
@@ -21,11 +22,13 @@ import { Genero } from './genero/entities/genero.entity';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_DATABASE,
-      entities: [Autore,Genero],
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
       autoLoadEntities: true,
       synchronize: true,
     }),
-    AutoresModule, GeneroModule,
+    AutoresModule,GeneroModule,CancionModule
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

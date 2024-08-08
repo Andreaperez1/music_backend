@@ -1,4 +1,5 @@
-import { IsString, IsOptional } from 'class-validator';
+import { IsString, IsOptional, IsNotEmpty } from 'class-validator';
+import { Genero } from 'src/genero/entities/genero.entity';
 
 export class CreateAutoreDto {
   @IsString()
@@ -7,4 +8,8 @@ export class CreateAutoreDto {
   @IsOptional()
   @IsString()
   pais?: string;
+
+  @IsNotEmpty()
+  genero: Genero[]; 
+
 }

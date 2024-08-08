@@ -1,10 +1,19 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Autore } from 'src/autores/entities/autore.entity';
+import { Cancion } from 'src/cancion/entities/cancion.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, OneToMany } from 'typeorm';
 
 @Entity()
 export class Genero {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: Number;
 
   @Column()
-  nombre: string;
+  nombre: String;
+  
+  @OneToMany(() => Cancion, (cancion) => cancion.genero)
+  cancion: Cancion[];
+  
+  @ManyToMany(() => Autore, (autor) => autor.genero)
+  autor: Autore[]
+
 }

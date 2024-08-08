@@ -12,7 +12,7 @@ export class AutoresService {
     private readonly autoreRepository: Repository<Autore>,
   ) {}
 
-  async create(createAutoreDto: CreateAutoreDto): Promise<Autore> {
+  async create(createAutoreDto: CreateAutoreDto) {
     const autore = this.autoreRepository.create(createAutoreDto);
     return this.autoreRepository.save(autore);
   }
@@ -26,7 +26,7 @@ export class AutoresService {
   }
 
   async update(id: number, updateAutoreDto: UpdateAutoreDto): Promise<Autore> {
-    await this.autoreRepository.update(id, updateAutoreDto);
+    await this.autoreRepository.update(id,updateAutoreDto);
     return this.findOne(id);  // Ensure to return the updated entity
   }
 
