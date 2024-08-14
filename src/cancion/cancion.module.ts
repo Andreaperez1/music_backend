@@ -8,6 +8,7 @@ import { Cancion } from './entities/cancion.entity';
   imports: [TypeOrmModule.forFeature([Cancion])],
   controllers: [CancionController],
   providers: [CancionService],
+  exports: [TypeOrmModule,CancionService],
   
 })
 export class CancionModule {}

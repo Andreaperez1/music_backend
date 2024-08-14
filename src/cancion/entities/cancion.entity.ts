@@ -10,11 +10,12 @@ export class Cancion {
     @Column()
     nombre: String;
 
-    @Column()
-    ano: number;
 
     @Column({type:'text'})
     portada: string;
+    
+    @Column()
+    ano: number;
 
 
     @ManyToOne(() => Autore, (autor) => autor.cancion)

@@ -24,7 +24,7 @@ import { CancionModule } from './cancion/cancion.module';
       database: process.env.DB_DATABASE,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
     }),
     AutoresModule,GeneroModule,CancionModule
   ],
