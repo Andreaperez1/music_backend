@@ -1,14 +1,18 @@
-import { IsDate, IsNotEmpty, IsString } from 'class-validator';
+/* eslint-disable prettier/prettier */
+import { IsNotEmpty } from 'class-validator';
 import { Autore } from 'src/autores/entities/autore.entity';
 import { Genero } from 'src/genero/entities/genero.entity';
 
 export class CreateCancionDto {
   
   @IsNotEmpty()
-  nombre: String;
+  nombre: string;
 
   @IsNotEmpty()
-  ano: number;
+  year: number;
+
+  @IsNotEmpty()
+  cancion: string;
 
   @IsNotEmpty()
   portada: string;

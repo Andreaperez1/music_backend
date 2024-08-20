@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Autore } from 'src/autores/entities/autore.entity';
 import { Cancion } from 'src/cancion/entities/cancion.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, OneToMany } from 'typeorm';
@@ -5,10 +6,10 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, OneToMany } from 't
 @Entity()
 export class Genero {
   @PrimaryGeneratedColumn()
-  id: Number;
+  id: number;
 
   @Column()
-  nombre: String;
+  nombre: string;
   
   @OneToMany(() => Cancion, (cancion) => cancion.genero)
   cancion: Cancion[];

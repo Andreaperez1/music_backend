@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
 import { CancionService } from './cancion.service';
 import { CreateCancionDto } from './dto/create-cancion.dto';
 import { UpdateCancionDto } from './dto/update-cancion.dto';
@@ -9,12 +10,12 @@ export class CancionController {
 
   @Post('/crear')
    async create(@Body() createCancionDto: CreateCancionDto) {
-    return  await this.cancionService.create(createCancionDto);
+    return  await this.cancionService.crearCancion(createCancionDto);
   }
 
   @Get()
   findAll() {
-    return this.cancionService.findAll();
+    return this.cancionService.obtenerCancion();
   }
 
   @Get(':id')
@@ -22,13 +23,13 @@ export class CancionController {
     return this.cancionService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCancionDto: UpdateCancionDto) {
-    return this.cancionService.update(+id, updateCancionDto);
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() updateCancionDto: UpdateCancionDto) {
+    const idNumber = parseInt(id, 10); // Convert to number
+    return this.cancionService.actualizarCancion(idNumber, updateCancionDto);
   }
-
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.cancionService.remove(+id);
+    return this.cancionService.eliminarCancion(+id);
   }
 }

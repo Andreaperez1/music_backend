@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { AutoresService } from './autores.service';
 import { CreateAutoreDto } from './dto/create-autore.dto';
@@ -9,12 +10,12 @@ export class AutoresController {
 
   @Post()
   create(@Body() createAutoreDto: CreateAutoreDto) {
-    return this.autoresService.create(createAutoreDto);
+    return this.autoresService.crearAutor(createAutoreDto);
   }
 
   @Get()
   findAll() {
-    return this.autoresService.findAll();
+    return this.autoresService.obtenerAutor();
   }
 
   @Get(':id')
@@ -26,12 +27,12 @@ export class AutoresController {
   @Put(':id')
   async update(@Param('id') id: string, @Body() updateAutoreDto: UpdateAutoreDto) {
     const idNumber = parseInt(id, 10); // Convert to number
-    return this.autoresService.update(idNumber, updateAutoreDto);
+    return this.autoresService.ActualizarAutor(idNumber, updateAutoreDto);
   }
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
     const idNumber = parseInt(id, 10); // Convert to number
-    return this.autoresService.remove(idNumber);
+    return this.autoresService.eliminarAutor(idNumber);
   }
 }

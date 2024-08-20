@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Cancion } from 'src/cancion/entities/cancion.entity';
 import { Genero } from 'src/genero/entities/genero.entity';
 import {
@@ -12,18 +13,19 @@ import {
 @Entity()
 export class Autore {
   @PrimaryGeneratedColumn()
-  id: Number;
+  id: number;
 
   @Column()
-  nombre: String;
+  nombre: string;
 
   @Column({ nullable: true })
-  pais: String;
+  pais: string;
 
   @OneToMany(() => Cancion, (cancion) => cancion.autor)
   cancion: Cancion[];
 
   @ManyToMany(() => Genero, (genero) => genero.autor, {
+    eager:true,
     cascade: true,
   })
   @JoinTable()

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { CreateCancionDto } from './dto/create-cancion.dto';
 import { UpdateCancionDto } from './dto/update-cancion.dto';
@@ -12,24 +13,25 @@ export class CancionService {
     private readonly cancionRepository: Repository<Cancion>
 
   ){}
-  async create(createCancionDto: CreateCancionDto) {
-      return await this.cancionRepository.save(createCancionDto);
+  async crearCancion(createCancionDto: CreateCancionDto) {
+      return await this.cancionRepository.insert(createCancionDto);
     
   }
 
-  findAll() {
-    return `This action returns all cancion`;
+   async obtenerCancion() {
+    return await this.cancionRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} cancion`;
+  async findOne(id: number) : Promise<Cancion>{
+    return await this.cancionRepository.findOneBy({ id });
   }
 
-  update(id: number, updateCancionDto: UpdateCancionDto) {
-    return `This action updates a #${id} cancion`;
+  async actualizarCancion(id: number, updateCancionDto: UpdateCancionDto): Promise<Cancion> {
+    await this.cancionRepository.update(id,updateCancionDto);
+    return  await this.findOne(id);  // Ensure to return the updated entity
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} cancion`;
+  async eliminarCancion(id: number): Promise<void> {
+    await this.cancionRepository.delete(id);
   }
 }
