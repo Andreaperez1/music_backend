@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IsString, IsOptional, IsNotEmpty } from 'class-validator';
 import { Genero } from 'src/genero/entities/genero.entity';
 

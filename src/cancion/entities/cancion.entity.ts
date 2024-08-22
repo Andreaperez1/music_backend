@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { Autore } from 'src/autores/entities/autore.entity';
 import { Genero } from 'src/genero/entities/genero.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Playlist } from 'src/playlist/entities/playlist.entity';
+import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Cancion {
@@ -29,4 +30,8 @@ export class Cancion {
     eager:true
   })
   genero: Genero[];
+
+ @ManyToMany(() => Playlist, (playlist) => playlist.cancion)
+  playlist: Playlist[]
+ 
 }

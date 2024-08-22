@@ -7,6 +7,8 @@ import { AppService } from './app.service';
 import { AutoresModule } from './autores/autores.module';
 import { GeneroModule } from './genero/genero.module';
 import { CancionModule } from './cancion/cancion.module';
+import { PlaylistModule } from './playlist/playlist.module';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { CancionModule } from './cancion/cancion.module';
     AutoresModule,
     GeneroModule,
     CancionModule,
+    PlaylistModule,
+    UsuarioModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,5 +1,4 @@
-import { PartialType } from '@nestjs/mapped-types';
-
+/* eslint-disable prettier/prettier */
 import {  IsOptional, IsString } from 'class-validator';
 
 export class UpdateAutoreDto{
